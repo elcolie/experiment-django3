@@ -72,6 +72,7 @@ THIRD_PARTY_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "django_filters",
+    "graphene_django",
 ]
 
 LOCAL_APPS = [

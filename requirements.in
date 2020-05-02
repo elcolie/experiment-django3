@@ -17,6 +17,7 @@ django-allauth
 django-crispy-forms
 django-redis
 djangorestframework
+graphene-django
 
 # local
 Werkzeug

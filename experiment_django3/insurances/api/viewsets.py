@@ -1,5 +1,5 @@
 from django.db.models import F
-from django_filters import rest_framework as filters
+from django_filters import rest_framework as filters, OrderingFilter
 from rest_framework import viewsets
 
 from experiment_django3.insurances.api.serializers import PremiumSerializer, CalculatedPremiumSerializer
@@ -8,6 +8,14 @@ from experiment_django3.insurances.models import Premium
 
 class PremiumFilter(filters.FilterSet):
     premium = filters.NumberFilter(label='premium', method='filter_premium')
+
+    order_by = OrderingFilter(
+        fields=(
+            ('percentage', 'percentage'),
+            ('sum_insured', 'sum_insured'),
+            ('premium', 'premium'),
+        )
+    )
 
     class Meta:
         model = Premium
