@@ -27,5 +27,6 @@ class CalculatedPremiumSerializer(serializers.ModelSerializer):
         fields = [
             'percentage',
             'premium',
+            'sum_insured',
         ]
         read_only_fields = ['percentage']

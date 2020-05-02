@@ -7,7 +7,7 @@ from experiment_django3.insurances.models import Premium
 
 
 class PremiumFilter(filters.FilterSet):
-    premium = filters.NumberFilter(method='filter_premium')
+    premium = filters.NumberFilter(label='premium', method='filter_premium')
 
     class Meta:
         model = Premium
@@ -16,7 +16,11 @@ class PremiumFilter(filters.FilterSet):
             'premium',
         ]
 
-
+    def filter_premium(self, queryset, name, value):
+        if name == 'premium':
+            return queryset.filter(premium__gte=value)
+        else:
+            return queryset
 
 
 class PremiumViewSet(viewsets.ModelViewSet):
@@ -58,4 +62,3 @@ class PremiumViewSet(viewsets.ModelViewSet):
             )
         else:
             return self.queryset
-

@@ -64,3 +64,24 @@ class TestPremium(TransactionTestCase):
         assert res.data['results'][1]['premium'] == '120.00'
         assert res.data['results'][2]['premium'] == '180.00'
         assert res.data['results'][3]['premium'] == '240.00'
+
+    def test_filter_premium(self):
+        """
+        Given `sum_insured and premium`
+        :return:
+        """
+        User = get_user_model()
+        user = baker.make(User)
+        client = APIClient()
+        client.force_authenticate(user=user)
+        url = reverse('api:premium-list')
+        data = {
+            'sum_insured': 6000,
+            'premium': 100,
+        }
+        res = client.get(url, data=data)
+        assert status.HTTP_200_OK == res.status_code
+        assert 3 == res.data['count']
+        assert '120.00' == res.data['results'][0]['premium']
+        assert '180.00' == res.data['results'][1]['premium']
+        assert '240.00' == res.data['results'][2]['premium']
