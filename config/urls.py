@@ -30,7 +30,7 @@ if settings.DEBUG:
 urlpatterns += [
     # API base url
     path("api/", include("config.api_router")),
-    path('graphql', GraphQLView.as_view(graphiql=True, schema=schema)),
+    path('graphql/', GraphQLView.as_view(graphiql=True, schema=schema)),
     # DRF auth token
     path("auth-token/", obtain_auth_token),
 ]

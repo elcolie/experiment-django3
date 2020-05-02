@@ -9,7 +9,7 @@ from rest_framework.test import APIClient
 from experiment_django3.insurances.models import Premium
 
 
-class TestPremium(TransactionTestCase):
+class DummyMixin:
     def setUp(self) -> None:
         dummy = [
             Premium(percentage=1, sum_insured=(5000, None)),
@@ -18,6 +18,9 @@ class TestPremium(TransactionTestCase):
             Premium(percentage=4, sum_insured=(10000, None)),
         ]
         Premium.objects.bulk_create(dummy)
+
+
+class TestPremium(DummyMixin, TransactionTestCase):
 
     def test_filter(self):
         """

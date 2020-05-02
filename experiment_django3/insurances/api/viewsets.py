@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from django.db.models import F
 from django_filters import rest_framework as filters, OrderingFilter
 from rest_framework import viewsets
@@ -8,6 +10,7 @@ from experiment_django3.insurances.models import Premium
 
 class PremiumFilter(filters.FilterSet):
     premium = filters.NumberFilter(label='premium', method='filter_premium')
+    sum_insured = filters.NumberFilter(label='sum_insured', method='filter_sum_insured')
 
     order_by = OrderingFilter(
         fields=(
@@ -22,6 +25,7 @@ class PremiumFilter(filters.FilterSet):
         fields = [
             'percentage',
             'premium',
+            'sum_insured',
         ]
 
     def filter_premium(self, queryset, name, value):
@@ -29,6 +33,9 @@ class PremiumFilter(filters.FilterSet):
             return queryset.filter(premium__gte=value)
         else:
             return queryset
+
+    def filter_sum_insured(self, queryset, name, value):
+        return queryset.filter(sum_insured__contains=(value, value))
 
 
 class PremiumViewSet(viewsets.ModelViewSet):
