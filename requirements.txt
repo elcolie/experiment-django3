@@ -8,7 +8,6 @@ alabaster==0.7.12         # via sphinx
 amqp==2.5.2               # via kombu
 aniso8601==7.0.0          # via graphene
 appdirs==1.4.3            # via black, virtualenv
-appnope==0.1.0            # via ipython
 argon2-cffi==19.2.0       # via -r requirements.in
 asgiref==3.2.7            # via django
 astroid==2.4.0            # via pylint, pylint-celery
@@ -44,7 +43,7 @@ django-redis==4.11.0      # via -r requirements.in
 django-storages[boto3]==1.9.1  # via -r requirements.in, collectfast
 django-stubs==1.5.0       # via -r requirements.in
 django-timezone-field==4.0  # via django-celery-beat
-django==3.0.5             # via -r requirements.in, collectfast, django-allauth, django-anymail, django-celery-beat, django-debug-toolbar, django-filter, django-model-utils, django-redis, django-storages, django-stubs, django-timezone-field, djangorestframework, graphene-django, model-bakery
+django==3.0.7             # via -r requirements.in, collectfast, django-allauth, django-anymail, django-celery-beat, django-debug-toolbar, django-filter, django-model-utils, django-redis, django-storages, django-stubs, django-timezone-field, djangorestframework, graphene-django, model-bakery
 djangorestframework==3.11.0  # via -r requirements.in
 docutils==0.15.2          # via botocore, sphinx
 entrypoints==0.3          # via flake8
